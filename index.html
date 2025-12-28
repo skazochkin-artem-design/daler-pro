@@ -140,7 +140,6 @@
         
         .check { color: #fff; margin-right: 15px; font-weight: 900; }
 
-        /* ЦЕНА (СДЕЛАЛ АККУРАТНЕЕ) */
         .price-box {
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -152,10 +151,9 @@
         
         .price { 
             font-family: 'Montserrat', sans-serif;
-            font-size: 42px; /* Чуть меньше чем было */
-            font-weight: 700; /* Bold вместо Black */
+            font-size: 42px; 
+            font-weight: 700; 
             display: block; 
-            /* Градиентный текст */
             background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -174,30 +172,51 @@
         }
         .btn:active { transform: scale(1.1) !important; box-shadow: 0 0 60px rgba(255,255,255,1) !important; background: #fff; }
 
-        /* СЛАЙДЕРЫ */
-        .slider-header { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; margin-bottom: 20px; border-left: 6px solid #fff; padding-left: 20px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .slider-window {
-            position: relative; width: 100%; height: 500px;
-            border-radius: 40px; overflow: hidden; border: 1px solid var(--border); 
-            margin-bottom: 50px; background: #111;
-            transform: translateZ(0); -webkit-mask-image: -webkit-radial-gradient(white, black);
+        /* НОВЫЙ СЛАЙДЕР (СВАЙП) */
+        .swipe-hint {
+            text-align: right;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            padding-right: 10px;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch; /* Плавность на iOS */
+            scrollbar-width: none; /* Скрыть скроллбар Firefox */
+        }
+        
+        .slider-container::-webkit-scrollbar { display: none; } /* Скрыть скроллбар Chrome/Safari */
+
+        .slide-item {
+            flex: 0 0 100%; /* Один слайд на весь экран */
+            height: 500px;
+            scroll-snap-align: center;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #111;
+            position: relative;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-        .slider-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-        .slide { min-width: 100%; height: 100%; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
-        .slide:active img { filter: grayscale(0%); }
+
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
         
-        .slider-nav {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; justify-content: space-between; align-items: center; padding: 0 15px; pointer-events: none;
-        }
-        .arr { 
-            width: 55px; height: 55px; background: rgba(255,255,255,0.3); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; color: #fff; 
-            font-size: 24px; font-weight: 900; pointer-events: auto; backdrop-filter: blur(10px);
-        }
-        .arr:active { background: #fff; color: #000; transform: scale(0.9); }
+        /* При касании фото становится цветным */
+        .slide-item:active img { filter: grayscale(0%); }
 
         /* FAQ */
         .faq-box { margin-bottom: 100px; }
@@ -268,7 +287,6 @@
                 <li><span class="check">✓</span> Контроль техники и отчетов</li>
             </ul>
 
-            <!-- ЦЕНА -->
             <div class="price-box">
                 <span class="price">20.000 ₽ / мес</span>
             </div>
@@ -278,21 +296,16 @@
 
         <h2 class="section-title">Результаты</h2>
 
-        <!-- ЕДИНЫЙ СЛАЙДЕР РЕЗУЛЬТАТОВ (7 ФОТО) -->
-        <div class="slider-window" id="main-slider">
-            <div class="slider-track">
-                <div class="slide"><img src="res1.jpg"></div>
-                <div class="slide"><img src="res2.jpg"></div>
-                <div class="slide"><img src="res3.jpg"></div>
-                <div class="slide"><img src="res4.jpg"></div>
-                <div class="slide"><img src="res5.jpg"></div>
-                <div class="slide"><img src="res6.jpg"></div>
-                <div class="slide"><img src="res7.jpg"></div>
-            </div>
-            <div class="slider-nav">
-                <div class="arr" onclick="moveSlide('main-slider', -1)">&#10094;</div>
-                <div class="arr" onclick="moveSlide('main-slider', 1)">&#10095;</div>
-            </div>
+        <!-- СВАЙП-ГАЛЕРЕЯ -->
+        <div class="swipe-hint">Листай →</div>
+        <div class="slider-container">
+            <div class="slide-item"><img src="res1.jpg"></div>
+            <div class="slide-item"><img src="res2.jpg"></div>
+            <div class="slide-item"><img src="res3.jpg"></div>
+            <div class="slide-item"><img src="res4.jpg"></div>
+            <div class="slide-item"><img src="res5.jpg"></div>
+            <div class="slide-item"><img src="res6.jpg"></div>
+            <div class="slide-item"><img src="res7.jpg"></div>
         </div>
 
         <!-- FAQ -->
@@ -327,21 +340,5 @@
         <footer>DALER ISMATOV &copy; 2026</footer>
     </div>
 
-    <script>
-        const sliderPos = {};
-        function moveSlide(id, direction) {
-            const track = document.getElementById(id).querySelector('.slider-track');
-            const totalSlides = track.children.length; 
-            
-            if(!sliderPos[id]) sliderPos[id] = 0;
-            
-            sliderPos[id] += direction;
-            
-            if(sliderPos[id] < 0) sliderPos[id] = totalSlides - 1;
-            if(sliderPos[id] >= totalSlides) sliderPos[id] = 0;
-            
-            track.style.transform = `translateX(-${sliderPos[id] * 100}%)`;
-        }
-    </script>
 </body>
 </html>

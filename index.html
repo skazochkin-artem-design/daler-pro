@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DALER ISMATOV | PRO COACH</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.1);
-            --border: rgba(255, 255, 255, 0.2);
-            --steel: linear-gradient(-45deg, #7a7a7a, #1a1a1a, #a0a0a0, #262626);
+            --glass: rgba(20, 20, 20, 0.6); 
+            --border: rgba(255, 255, 255, 0.15);
+            --steel: linear-gradient(-45deg, #8c8c8c, #3b3b3b, #a6a6a6, #4f4f4f);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent !important; 
+            outline: none !important;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000;
+            background-color: #2b2b2b;
             color: #fff;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* АНИМИРОВАННЫЙ ФОН */
+        /* ФОН */
         #bg-layer {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -39,219 +44,303 @@
         .container { position: relative; z-index: 10; max-width: 500px; margin: 0 auto; padding: 0 20px; }
 
         /* HEADER */
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; letter-spacing: 1px; text-transform: uppercase; }
+        header { padding: 40px 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; 
+            letter-spacing: 1px; text-transform: uppercase; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
 
         /* HERO */
         .hero { text-align: center; padding-bottom: 50px; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 55px; font-weight: 900; line-height: 0.85; margin: 25px 0; text-transform: uppercase; }
+        
+        .hero h1 { 
+            font-family: 'Montserrat', sans-serif; font-size: 58px; font-weight: 900; 
+            line-height: 0.85; margin: 30px 0; text-transform: uppercase;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            color: #fff;
+        }
         
         .img-box {
             width: 100%; height: 480px; border-radius: 40px; overflow: hidden; 
             border: 1px solid var(--border); margin-bottom: 30px; background: #111;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
-        
-        /* Эффект на картинках при тапе */
-        .img-box:active { transform: scale(0.96); }
-        .img-box:active img { filter: grayscale(0%); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: all 0.6s ease; }
+        .img-box:active img { filter: grayscale(0%); transform: scale(1.05); }
 
-        /* КНОПКИ: СВЕЧЕНИЕ И УВЕЛИЧЕНИЕ (АКТИВАЦИЯ ПРИ ТАПЕ) */
-        .btn {
-            background: #fff; color: #000; text-decoration: none;
-            padding: 22px; border-radius: 20px; font-weight: 900;
-            text-transform: uppercase; display: block; text-align: center;
-            font-size: 15px; letter-spacing: 1px;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: none;
-        }
-
-        /* Тот самый эффект "Подсветки и Увеличения" */
-        .btn:active {
-            transform: scale(1.1) !important; /* Увеличение */
-            background: #ffffff !important;
-            box-shadow: 0 0 60px rgba(255, 255, 255, 1) !important; /* Мощное свечение */
-        }
-
-        /* ОБ АТЛЕТЕ */
+        /* ABOUT */
         .about-card {
-            background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border); border-radius: 45px; padding: 45px 20px; text-align: center;
+            background: var(--glass); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border); border-radius: 45px; padding: 50px 25px; text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         .avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #fff; margin-bottom: 25px; object-fit: cover; }
-        .merit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 30px; }
+        .about-card h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 30px; }
+        
+        .merit-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 12px; 
+        }
+        
         .merit-item {
-            background: rgba(255,255,255,0.05); padding: 15px; border-radius: 18px;
-            font-size: 10px; font-weight: 900; text-transform: uppercase; border-left: 3px solid #fff; text-align: left;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            padding: 18px 20px; 
+            border-radius: 16px;
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            letter-spacing: 1px;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         /* УСЛУГИ */
-        .section-title { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 40px; font-weight: 900; margin: 80px 0 40px; text-transform: uppercase; }
-        .service-card {
-            background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border); border-radius: 45px; padding: 60px 30px; margin-bottom: 30px; text-align: center;
+        .section-title { 
+            text-align: center; font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; 
+            margin: 80px 0 40px; text-transform: uppercase; 
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
         }
-        .service-card h3 { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; line-height: 1; }
-        .divider { width: 60px; height: 5px; background: #fff; margin: 0 auto 25px; border-radius: 10px; }
-        .price { font-size: 38px; font-weight: 900; margin-bottom: 35px; display: block; }
+        
+        .premium-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 45px; padding: 50px 30px; 
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .premium-card h3 { 
+            font-family: 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; 
+            margin-bottom: 10px; text-transform: uppercase; line-height: 1; 
+        }
+        
+        .sub-title { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #ccc; margin-bottom: 30px; display: block; font-weight: 700; }
+
+        .features-list {
+            list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left;
+        }
+        
+        .features-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .features-list li:last-child { border-bottom: none; }
+        
+        .check { color: #fff; margin-right: 15px; font-weight: 900; }
+
+        /* ЦЕНА (СДЕЛАЛ АККУРАТНЕЕ) */
+        .price-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 25px;
+            padding: 20px 0;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.05);
+        }
+        
+        .price { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px; /* Чуть меньше чем было */
+            font-weight: 700; /* Bold вместо Black */
+            display: block; 
+            /* Градиентный текст */
+            background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+        }
+
+        /* КНОПКИ */
+        .btn {
+            background: #fff; color: #000; text-decoration: none;
+            padding: 24px; border-radius: 22px; font-weight: 900;
+            text-transform: uppercase; display: block; text-align: center;
+            font-size: 16px; letter-spacing: 1px;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border: none;
+        }
+        .btn:active { transform: scale(1.1) !important; box-shadow: 0 0 60px rgba(255,255,255,1) !important; background: #fff; }
 
         /* СЛАЙДЕРЫ */
-        .slider-header { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; margin-bottom: 15px; border-left: 5px solid #fff; padding-left: 18px; text-transform: uppercase; }
-        .slider-box { position: relative; width: 100%; height: 450px; border-radius: 35px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 40px; background: #111; }
-        .track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .slider-header { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; margin-bottom: 20px; border-left: 6px solid #fff; padding-left: 20px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .slider-window {
+            position: relative; width: 100%; height: 500px;
+            border-radius: 40px; overflow: hidden; border: 1px solid var(--border); 
+            margin-bottom: 50px; background: #111;
+            transform: translateZ(0); -webkit-mask-image: -webkit-radial-gradient(white, black);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .slider-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .slide { min-width: 100%; height: 100%; }
         .slide img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
         .slide:active img { filter: grayscale(0%); }
-        .nav { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 10px; pointer-events: none; }
-        .arr { width: 50px; height: 50px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; pointer-events: auto; backdrop-filter: blur(10px); }
+        
+        .slider-nav {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; justify-content: space-between; align-items: center; padding: 0 15px; pointer-events: none;
+        }
+        .arr { 
+            width: 55px; height: 55px; background: rgba(255,255,255,0.3); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: #fff; 
+            font-size: 24px; font-weight: 900; pointer-events: auto; backdrop-filter: blur(10px);
+        }
+        .arr:active { background: #fff; color: #000; transform: scale(0.9); }
 
         /* FAQ */
-        details { background: var(--glass); border: 1px solid var(--border); border-radius: 25px; margin-bottom: 15px; padding: 25px; }
-        summary { font-weight: 900; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; font-size: 15px; outline: none; }
+        .faq-box { margin-bottom: 100px; }
+        details { 
+            background: var(--glass); border: 1px solid var(--border); 
+            border-radius: 25px; margin-bottom: 15px; padding: 25px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        summary { font-weight: 900; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; font-size: 16px; outline: none; }
         summary::after { content: '+'; }
         details[open] summary::after { content: '-'; }
-        .faq-ans { padding-top: 15px; color: #bbb; line-height: 1.5; font-size: 15px; }
+        .faq-content { padding-top: 20px; color: #ccc; line-height: 1.6; font-size: 15px; }
 
-        footer { padding: 60px 0; text-align: center; opacity: 0.4; font-size: 11px; letter-spacing: 5px; }
+        footer { padding: 80px 0; text-align: center; opacity: 0.6; font-size: 11px; letter-spacing: 5px; }
     </style>
 </head>
-<body ontouchstart=""> <!-- Активирует :active на iPhone -->
+<body ontouchstart="">
 
     <div id="bg-layer"></div>
 
     <div class="container">
         <header>
             <div class="logo">DALER ISMATOV</div>
-            <a href="https://t.me/dalerisma" class="btn" style="padding: 10px 20px; font-size: 10px; border-radius: 100px;">TG</a>
+            <a href="https://t.me/dalerisma" target="_blank" class="btn" style="padding: 10px 22px; font-size: 11px; border-radius: 100px;">TG</a>
         </header>
 
         <!-- HERO -->
         <section class="hero">
             <div class="img-box">
-                <img src="hero.jpg" alt="Athlete"> <!-- Твое локальное фото hero.jpg -->
+                <img src="hero.jpg" alt="Coach">
             </div>
-            <div style="font-weight: 700; color: #aaa; letter-spacing: 4px; font-size: 12px; text-transform: uppercase;">IFBB PRO ATHLETE</div>
+            <div style="font-weight: 700; color: #ccc; letter-spacing: 4px; font-size: 14px; text-transform: uppercase;">IFBB PRO ATHLETE</div>
+            
             <h1>BUILD YOUR<br>LEGACY</h1>
-            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу начать путь к форме мечты." class="btn" style="margin-top: 30px;">НАЧАТЬ ПУТЬ</a>
+            
+            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу начать путь к форме мечты." class="btn" style="margin-top: 35px;">НАЧАТЬ ПУТЬ</a>
         </section>
 
         <!-- ОБ АТЛЕТЕ -->
         <section class="about-card">
-            <img src="daler-bio.jpg" class="avatar" alt="Avatar"> <!-- Твое локальное фото daler-bio.jpg -->
-            <div style="font-weight: 700; color: #888; font-size: 11px; letter-spacing: 2px; margin-bottom: 10px;">ОСНОВАТЕЛЬ / IFBB PRO</div>
-            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; text-transform: uppercase;">ДАЛЕР ИСМАТОВ</h2>
+            <img src="daler-bio.jpg" class="avatar" alt="Daler Avatar">
+            <div style="font-weight: 700; color: #aaa; font-size: 12px; letter-spacing: 3px; margin-bottom: 10px;">ОСНОВАТЕЛЬ / IFBB PRO</div>
+            <h2>ДАЛЕР ИСМАТОВ</h2>
             
             <div class="merit-grid">
-                <div class="merit-item">🏆 Чемпион Мира</div>
-                <div class="merit-item">🥇 7х Чемпион РФ</div>
-                <div class="merit-item">🏅 Статус МСМК</div>
-                <div class="merit-item">🦾 10+ лет опыта</div>
-                <div class="merit-item">🧬 Биохимия и БАД</div>
-                <div class="merit-item">📈 500+ кейсов</div>
+                <div class="merit-item">Чемпион Мира</div>
+                <div class="merit-item">7-кратный Чемпион России</div>
+                <div class="merit-item">Мастер Спорта Международного Класса</div>
+                <div class="merit-item">Тренерский стаж более 15 лет</div>
+                <div class="merit-item">100+ успешных кейсов</div>
             </div>
         </section>
 
-        <h2 class="section-title">Виды услуг</h2>
+        <h2 class="section-title">Услуги</h2>
         
-        <div class="service-card">
-            <h3>ONLINE<br>СОПРОВОЖДЕНИЕ</h3>
-            <div class="divider"></div>
-            <p style="color:#ccc; margin-bottom:25px;">Полный контроль 24/7. Питание, тренинг, анализы и еженедельные корректировки.</p>
-            <span class="price">20.000 ₽ / мес</span>
-            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу записаться на ПОЛНОЕ СОПРОВОЖДЕНИЕ." class="btn">ЗАБРОНИРОВАТЬ</a>
-        </div>
+        <!-- ЕДИНАЯ КАРТОЧКА УСЛУГИ -->
+        <div class="premium-card">
+            <h3>ОНЛАЙН<br>ВЕДЕНИЕ</h3>
+            <span class="sub-title">ALL INCLUSIVE</span>
+            
+            <ul class="features-list">
+                <li><span class="check">✓</span> Составление диеты и КБЖУ</li>
+                <li><span class="check">✓</span> Тренировочный сплит</li>
+                <li><span class="check">✓</span> План приема добавок (БАД)</li>
+                <li><span class="check">✓</span> Составление курса (по необходимости)</li>
+                <li><span class="check">✓</span> Полный разбор анализов</li>
+                <li><span class="check">✓</span> Ежедневная коммуникация</li>
+                <li><span class="check">✓</span> Контроль техники и отчетов</li>
+            </ul>
 
-        <div class="service-card">
-            <h3>ПРОГРАММА<br>ТРЕНИРОВОК</h3>
-            <div class="divider"></div>
-            <p style="color:#ccc; margin-bottom:25px;">Индивидуальный тренировочный план и рацион на 8-12 недель под твои цели.</p>
-            <span class="price">12.000 ₽</span>
-            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу заказать ПЛАН ТРЕНИРОВОК." class="btn">ПОЛУЧИТЬ ПЛАН</a>
-        </div>
+            <!-- ЦЕНА -->
+            <div class="price-box">
+                <span class="price">20.000 ₽ / мес</span>
+            </div>
 
-        <div class="service-card">
-            <h3>РАЗБОР<br>АНАЛИЗОВ</h3>
-            <div class="divider"></div>
-            <p style="color:#ccc; margin-bottom:25px;">Чекап здоровья, работа с гормонами и дефицитами. Подбор БАДов.</p>
-            <span class="price">7.000 ₽</span>
-            <a href="https://t.me/dalerisma?text=Далер, привет! Нужен РАЗБОР АНАЛИЗОВ." class="btn">ЗАПИСАТЬСЯ</a>
+            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу попасть на онлайн-ведение." class="btn">НАЧАТЬ РАБОТУ</a>
         </div>
 
         <h2 class="section-title">Результаты</h2>
 
-        <!-- СУШКА -->
-        <div class="slider-header">Экстремальная сушка</div>
-        <div class="slider-box" id="s1">
-            <div class="track">
-                <div class="slide"><img src="cut1.jpg"></div>
-                <div class="slide"><img src="cut2.jpg"></div>
-                <div class="slide"><img src="cut3.jpg"></div>
+        <!-- ЕДИНЫЙ СЛАЙДЕР РЕЗУЛЬТАТОВ (7 ФОТО) -->
+        <div class="slider-window" id="main-slider">
+            <div class="slider-track">
+                <div class="slide"><img src="res1.jpg"></div>
+                <div class="slide"><img src="res2.jpg"></div>
+                <div class="slide"><img src="res3.jpg"></div>
+                <div class="slide"><img src="res4.jpg"></div>
+                <div class="slide"><img src="res5.jpg"></div>
+                <div class="slide"><img src="res6.jpg"></div>
+                <div class="slide"><img src="res7.jpg"></div>
             </div>
-            <div class="nav"><div class="arr" onclick="move('s1',-1)">&#10094;</div><div class="arr" onclick="move('s1',1)">&#10095;</div></div>
+            <div class="slider-nav">
+                <div class="arr" onclick="moveSlide('main-slider', -1)">&#10094;</div>
+                <div class="arr" onclick="moveSlide('main-slider', 1)">&#10095;</div>
+            </div>
         </div>
 
-        <!-- МАССА -->
-        <div class="slider-header">Набор массы</div>
-        <div class="slider-box" id="s2">
-            <div class="track">
-                <div class="slide"><img src="mass1.jpg"></div>
-                <div class="slide"><img src="mass2.jpg"></div>
-                <div class="slide"><img src="mass3.jpg"></div>
-            </div>
-            <div class="nav"><div class="arr" onclick="move('s2',-1)">&#10094;</div><div class="arr" onclick="move('s2',1)">&#10095;</div></div>
-        </div>
-
-        <!-- ПОДГОТОВКА -->
-        <div class="slider-header">Подготовка к сцене</div>
-        <div class="slider-box" id="s3">
-            <div class="track">
-                <div class="slide"><img src="prep1.jpg"></div>
-                <div class="slide"><img src="prep2.jpg"></div>
-                <div class="slide"><img src="prep3.jpg"></div>
-            </div>
-            <div class="nav"><div class="arr" onclick="move('s3',-1)">&#10094;</div><div class="arr" onclick="move('s3',1)">&#10095;</div></div>
-        </div>
-
+        <!-- FAQ -->
         <h2 class="section-title">F.A.Q.</h2>
-        <details>
-            <summary>Как проходит ведение?</summary>
-            <div class="faq-ans">Раз в неделю ты присылаешь замеры и фото. Я корректирую план под твой прогресс. Связь в Telegram 24/7.</div>
-        </details>
-        <details>
-            <summary>Нужны ли анализы?</summary>
-            <div class="faq-ans">Да, это база для безопасности и результата. Список параметров дам на старте.</div>
-        </details>
-        <details>
-            <summary>Работаешь ли с новичками?</summary>
-            <div class="faq-ans">Конечно. Ставим технику и базу с самого нуля.</div>
-        </details>
-        <details>
-            <summary>Работаешь ли с девушками?</summary>
-            <div class="faq-ans">Да, веду и мужчин, и женщин.</div>
-        </details>
-        <details>
-            <summary>Как оплатить?</summary>
-            <div class="faq-ans">Перевод на карту, крипта или по ссылке. Обсуждаем лично в ТГ.</div>
-        </details>
-        <details>
-            <summary>Какие гарантии?</summary>
-            <div class="faq-ans">Гарантирую результат при 100% соблюдении моих рекомендаций.</div>
-        </details>
+        <div class="faq-box">
+            <details>
+                <summary>Как проходит ведение?</summary>
+                <div class="faq-content">Ежедневная связь. Раз в неделю — полный отчет с замерами и фото. Я корректирую питание и тренировки в зависимости от прогресса.</div>
+            </details>
+            <details>
+                <summary>Нужны ли анализы?</summary>
+                <div class="faq-content">Да. Мы работаем профессионально. Список анализов я скидываю сразу после оплаты.</div>
+            </details>
+            <details>
+                <summary>Можно ли новичкам?</summary>
+                <div class="faq-content">Да. Я выстраиваю технику и режим с нуля. Главное — ваше желание соблюдать дисциплину.</div>
+            </details>
+            <details>
+                <summary>Работаешь ли с девушками?</summary>
+                <div class="faq-content">Да, готовлю как мужчин, так и женщин (бикини, фитнес-модель, похудение).</div>
+            </details>
+            <details>
+                <summary>Как оплатить?</summary>
+                <div class="faq-content">Переводом на карту РФ, криптовалютой или через платежную ссылку.</div>
+            </details>
+            <details>
+                <summary>Какие гарантии?</summary>
+                <div class="faq-content">Гарантирую результат при 100% соблюдении моих рекомендаций по питанию, БАДам и тренировкам.</div>
+            </details>
+        </div>
 
-        <footer>DALER ISMATOV &copy; 2025</footer>
+        <footer>DALER ISMATOV &copy; 2026</footer>
     </div>
 
     <script>
-        // ЛОГИКА СЛАЙДЕРА
-        const cur = {};
-        function move(id, d) {
-            if(!cur[id]) cur[id] = 0;
-            cur[id] += d;
-            if(cur[id] < 0) cur[id] = 2;
-            if(cur[id] > 2) cur[id] = 0;
-            document.getElementById(id).querySelector('.track').style.transform = `translateX(-${cur[id]*100}%)`;
+        const sliderPos = {};
+        function moveSlide(id, direction) {
+            const track = document.getElementById(id).querySelector('.slider-track');
+            const totalSlides = track.children.length; 
+            
+            if(!sliderPos[id]) sliderPos[id] = 0;
+            
+            sliderPos[id] += direction;
+            
+            if(sliderPos[id] < 0) sliderPos[id] = totalSlides - 1;
+            if(sliderPos[id] >= totalSlides) sliderPos[id] = 0;
+            
+            track.style.transform = `translateX(-${sliderPos[id] * 100}%)`;
         }
     </script>
 </body>

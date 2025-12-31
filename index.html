@@ -9,7 +9,8 @@
         :root {
             --glass: rgba(20, 20, 20, 0.6); 
             --border: rgba(255, 255, 255, 0.15);
-            --steel: linear-gradient(-45deg, #8c8c8c, #3b3b3b, #a6a6a6, #4f4f4f);
+            /* СВЕТЛЫЙ ТИТАНОВЫЙ ГРАДИЕНТ */
+            --steel: linear-gradient(-45deg, #9e9e9e, #4a4a4a, #bfbfbf, #5e5e5e);
         }
 
         * { 
@@ -20,7 +21,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #2b2b2b;
+            background-color: #333;
             color: #fff;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -33,7 +34,7 @@
             z-index: -1;
             background: var(--steel);
             background-size: 400% 400%;
-            animation: metalFlow 10s ease infinite;
+            animation: metalFlow 8s ease infinite;
         }
         @keyframes metalFlow {
             0% { background-position: 0% 50%; }
@@ -51,29 +52,38 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        /* HERO */
-        .hero { text-align: center; padding-bottom: 50px; }
+        /* HERO (БЕЗ ФОТО) */
+        .hero { 
+            text-align: center; 
+            padding: 100px 0 80px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-subtitle {
+            font-weight: 700; 
+            color: #fff; 
+            letter-spacing: 6px; 
+            font-size: 14px; 
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
         
         .hero h1 { 
-            font-family: 'Montserrat', sans-serif; font-size: 58px; font-weight: 900; 
-            line-height: 0.85; margin: 30px 0; text-transform: uppercase;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 62px; 
+            font-weight: 900; 
+            line-height: 0.9; 
+            margin: 0 0 40px 0; 
+            text-transform: uppercase;
+            text-shadow: 0 5px 30px rgba(0,0,0,0.4);
             color: #fff;
         }
-        
-        .img-box {
-            width: 100%; height: 480px; border-radius: 40px; overflow: hidden; 
-            border: 1px solid var(--border); margin-bottom: 30px; background: #111;
-            position: relative;
-            /* ФИКС УГЛОВ */
-            -webkit-mask-image: -webkit-radial-gradient(white, black); 
-            transform: translateZ(0);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-        }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: all 0.6s ease; }
-        .img-box:active img { filter: grayscale(0%); transform: scale(1.05); }
 
-        /* ABOUT */
+        /* ABOUT (ЦЕНТРИРОВАНИЕ) */
         .about-card {
             background: var(--glass); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border); border-radius: 45px; padding: 50px 25px; text-align: center;
@@ -82,24 +92,24 @@
         .avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #fff; margin-bottom: 25px; object-fit: cover; }
         .about-card h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 30px; }
         
-        .merit-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
+        .merit-list { 
+            display: flex; 
+            flex-direction: column; 
             gap: 12px; 
+            margin-top: 35px; 
         }
         
         .merit-item {
-            background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            background: rgba(255,255,255,0.1);
             padding: 18px 20px; 
             border-radius: 16px;
             font-size: 13px; 
             font-weight: 700; 
             text-transform: uppercase; 
-            border: 1px solid rgba(255,255,255,0.1);
             text-align: center;
             letter-spacing: 1px;
             color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
         }
 
         /* УСЛУГИ */
@@ -110,12 +120,12 @@
         }
         
         .premium-card {
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(30, 30, 30, 0.5);
             backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
             border: 1px solid rgba(255, 255, 255, 0.2); 
             border-radius: 45px; padding: 50px 30px; 
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         .premium-card h3 { 
@@ -123,7 +133,7 @@
             margin-bottom: 10px; text-transform: uppercase; line-height: 1; 
         }
         
-        .sub-title { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #ccc; margin-bottom: 30px; display: block; font-weight: 700; }
+        .sub-title { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #ddd; margin-bottom: 30px; display: block; font-weight: 700; }
 
         .features-list {
             list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left;
@@ -131,7 +141,7 @@
         
         .features-list li {
             padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
             font-size: 16px;
             font-weight: 500;
             display: flex;
@@ -142,13 +152,14 @@
         
         .check { color: #fff; margin-right: 15px; font-weight: 900; }
 
+        /* ЦЕНА */
         .price-box {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 25px;
             padding: 20px 0;
             margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .price { 
@@ -156,71 +167,53 @@
             font-size: 42px; 
             font-weight: 700; 
             display: block; 
-            background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* КНОПКИ */
+        /* КНОПКИ С ПУЛЬСАЦИЕЙ */
         .btn {
             background: #fff; color: #000; text-decoration: none;
             padding: 24px; border-radius: 22px; font-weight: 900;
             text-transform: uppercase; display: block; text-align: center;
             font-size: 16px; letter-spacing: 1px;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
             border: none;
+            animation: pulse 2s infinite;
         }
-        .btn:active { transform: scale(1.1) !important; box-shadow: 0 0 60px rgba(255,255,255,1) !important; background: #fff; }
 
-        /* СЛАЙДЕР (СВАЙП) */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        .btn:active { 
+            transform: scale(0.95); 
+            background: #e0e0e0;
+            animation: none; 
+        }
+
+        /* СЛАЙДЕРЫ */
         .swipe-hint {
-            text-align: right;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            padding-right: 10px;
+            text-align: right; font-size: 12px; text-transform: uppercase; color: #ddd;
+            margin-bottom: 10px; letter-spacing: 1px; padding-right: 10px;
         }
 
         .slider-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 15px;
-            padding-bottom: 20px;
-            -webkit-overflow-scrolling: touch; 
-            scrollbar-width: none; 
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px;
+            padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; 
         }
-        
         .slider-container::-webkit-scrollbar { display: none; } 
 
         .slide-item {
-            flex: 0 0 100%; 
-            height: 500px;
-            scroll-snap-align: center;
-            border-radius: 40px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: #111;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            
-            /* ФИКС УГЛОВ ПРИ СКРОЛЛЕ */
-            -webkit-mask-image: -webkit-radial-gradient(white, black);
-            transform: translateZ(0);
+            flex: 0 0 100%; height: 500px; scroll-snap-align: center;
+            border-radius: 40px; overflow: hidden; border: 1px solid var(--border);
+            background: #111; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);
         }
-
-        .slide-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: 0.5s;
-        }
-        
+        .slide-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
         .slide-item:active img { filter: grayscale(0%); }
 
         /* FAQ */
@@ -233,9 +226,9 @@
         summary { font-weight: 900; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; font-size: 16px; outline: none; }
         summary::after { content: '+'; }
         details[open] summary::after { content: '-'; }
-        .faq-content { padding-top: 20px; color: #ccc; line-height: 1.6; font-size: 15px; }
+        .faq-content { padding-top: 20px; color: #ddd; line-height: 1.6; font-size: 15px; }
 
-        footer { padding: 80px 0; text-align: center; opacity: 0.6; font-size: 11px; letter-spacing: 5px; }
+        footer { padding: 80px 0; text-align: center; opacity: 0.7; font-size: 11px; letter-spacing: 5px; }
     </style>
 </head>
 <body ontouchstart="">
@@ -245,28 +238,23 @@
     <div class="container">
         <header>
             <div class="logo">DALER ISMATOV</div>
-            <a href="https://t.me/dalerisma" target="_blank" class="btn" style="padding: 10px 22px; font-size: 11px; border-radius: 100px;">TG</a>
+            <a href="https://t.me/dalerisma" target="_blank" class="btn" style="padding: 10px 22px; font-size: 11px; border-radius: 100px; animation: none;">TG</a>
         </header>
 
-        <!-- HERO -->
+        <!-- HERO (ТОЛЬКО ТЕКСТ) -->
         <section class="hero">
-            <div class="img-box">
-                <img src="hero.jpg" alt="Coach">
-            </div>
-            <div style="font-weight: 700; color: #ccc; letter-spacing: 4px; font-size: 14px; text-transform: uppercase;">IFBB PRO ATHLETE</div>
-            
+            <div class="hero-subtitle">IFBB PRO ATHLETE</div>
             <h1>BUILD YOUR<br>LEGACY</h1>
-            
-            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу начать путь к форме мечты." class="btn" style="margin-top: 35px;">НАЧАТЬ ПУТЬ</a>
+            <a href="https://t.me/dalerisma?text=Далер, привет! Хочу начать путь к форме мечты." class="btn" style="margin-top: 20px;">НАЧАТЬ ПУТЬ</a>
         </section>
 
-        <!-- ОБ АТЛЕТЕ -->
+        <!-- ОБ АТЛЕТЕ (ЦЕНТРИРОВАНО) -->
         <section class="about-card">
             <img src="daler-bio.jpg" class="avatar" alt="Daler Avatar">
-            <div style="font-weight: 700; color: #aaa; font-size: 12px; letter-spacing: 3px; margin-bottom: 10px;">ОСНОВАТЕЛЬ / IFBB PRO</div>
+            <div style="font-weight: 700; color: #ddd; font-size: 12px; letter-spacing: 3px; margin-bottom: 10px;">ОСНОВАТЕЛЬ / IFBB PRO</div>
             <h2>ДАЛЕР ИСМАТОВ</h2>
             
-            <div class="merit-grid">
+            <div class="merit-list">
                 <div class="merit-item">Чемпион Мира</div>
                 <div class="merit-item">7-кратный Чемпион России</div>
                 <div class="merit-item">Мастер Спорта Международного Класса</div>
@@ -293,7 +281,8 @@
             </ul>
 
             <div class="price-box">
-                <span class="price">20.000 ₽ / мес</span>
+                <!-- ЗАМЕНИЛ ЗНАК РУБЛЯ НА БУКВУ Р -->
+                <span class="price">20.000 Р / мес</span>
             </div>
 
             <a href="https://t.me/dalerisma?text=Далер, привет! Хочу попасть на онлайн-ведение." class="btn">НАЧАТЬ РАБОТУ</a>
@@ -301,7 +290,7 @@
 
         <h2 class="section-title">Результаты</h2>
 
-        <!-- СВАЙП-ГАЛЕРЕЯ -->
+        <!-- ЕДИНЫЙ СЛАЙДЕР РЕЗУЛЬТАТОВ (7 ФОТО) -->
         <div class="swipe-hint">Листай →</div>
         <div class="slider-container">
             <div class="slide-item"><img src="res1.jpg"></div>
